@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset User Credentials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .reset-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: hsl(104, 100%, 50%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b37100;
+        }
+    </style>
+</head>
+<body>
+
+<div class="reset-container">
+    <h2>Reset User Credentials</h2>
+    <form id="resetForm" onsubmit="return resetCredentials()">
+        <label for="currentUsername">Current Username:</label>
+        <input type="text" id="currentUsername" name="currentUsername" required>
+
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <button type="submit">Reset Credentials</button>
+    </form>
+</div>
+
+<script>
+    function resetCredentials() {
+        
+        const currentUsername = document.getElementById('currentUsername').value;
+        const newUsername = document.getElementById('newUsername').value;
+        const newPassword = document.getElementById('newPassword').value;
+
+
+        if (currentUsername && newUsername && newPassword) {
+            alert(`Credentials for '${currentUsername}' have been updated:\nNew Username: ${newUsername}\nNew Password: ${newPassword}`);
+        } else {
+            alert("Please fill out all fields.");
+        }
+        
+        return false; 
+    }
+</script>
+
+</body>
+</html>

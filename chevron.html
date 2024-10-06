@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevron Dropdown List</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron.down {
+            transform: rotate(90deg);
+        }
+
+        .item-list {
+            display: none;
+            list-style-type: none;
+            padding-left: 0;
+            position: absolute;
+            top: 0;
+            left: 210px; /* Position the list on the right side */
+            width: 150px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .item-list li {
+            padding: 5px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" onclick="toggleList()">
+        <span>Main Matter</span>
+        <span class="chevron">&#9654;</span> <!-- Chevron icon (right arrow) -->
+    </div>
+
+    <ul class="item-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        function toggleList() {
+            const chevron = document.querySelector('.chevron');
+            const itemList = document.querySelector('.item-list');
+
+            // Toggle the item list visibility
+            if (itemList.style.display === 'none' || itemList.style.display === '') {
+                itemList.style.display = 'block';
+                chevron.classList.add('down');
+            } else {
+                itemList.style.display = 'none';
+                chevron.classList.remove('down');
+            }
+        }
+    </script>
+
+</body>
+</html>

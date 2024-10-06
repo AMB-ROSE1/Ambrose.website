@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Pane Layout - Login and Info</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        
+        .login-container {
+            width: 50%;
+            padding: 40px;
+            background-color: #5ba4ee; 
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            width: 80%;
+        }
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-box input[type="text"], .login-box input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background-color: #218838;
+        }
+        .portallogo.footer{
+          background-color: aqua;
+          color: rgb(5, 9, 13);
+          text-align: center;
+          padding: 0px;
+          position: fixed;
+          left: 0%;
+          bottom: 0%;
+          right: 0%;
+          width: 100;  
+        }
+        
+        .portallogo {
+            width: 50%;
+            padding: 40px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+           .a{
+                text-decoration: none;
+                
+            }
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            max-width: 80%;
+        }
+        .info-box h2 {
+            margin-bottom: 20px;
+        }
+        .info-box p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="login-container">
+        <div class="login-box">
+            <h2>LOGIN</h2>
+            <form>
+                <label for="AdminID">AdminID/Username</label>
+                <input type="text" name="AdminID/username" placeholder="AdministratorID" required>
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <script src="login.js">
+
+                function login() {
+
+                    const correctDoctorID = "D001";
+                    const correctPassword = "dt12";
+
+                    const DoctorID = document.getElementById("DoctorID").value;
+                    const password = document.getElementById("Password").value;
+                    const loginResult = document.getElementById("LoginResult").value;
+
+                    if (DoctorID === correctDoctorID && password === correctPassword) {
+
+                        window.location.href = "/C:/Users/UNETS%20COMPUTERS/Desktop/Website/Subhome.html";
+
+                    } else {
+
+                        errorMessage.textContent = "Inavlid credentials.Please try again later.";
+                    }
+                }
+            </script>
+            <div class="switch-form">
+                <p>Did you forget your password? <a
+                        href="file:///C:/Users/UNETS%20COMPUTERS/Desktop/Website/Forgot.html"> Forgot Password</a>
+                </p>
+            </div>
+            <footer>
+                <p>&copy; 2024 Gamusi & sons</p>
+                <p>Contact us:+098467241</p>
+                <p>Privacy policy</p>
+            </footer>
+        </div>
+</div>
+    <div class="portallogo">
+        <img src="logo.jpg"  alt="Company Logo" class="logo"> 
+        <div class="info-box">
+            <h2>Welcome to Our Platform</h2>
+            
+                <div><p>Welcome to <b>Administrator's portal</b>, Is your central hub of managing and overseeing hospital's operations with efficiency and precision. From user's accounts management to system monitoring and data analytics. This secure platform provides tools that need to ensure smooth and compliant hospital operations. Stay in control, make informed decision and support your health team with our comprehensive intuitive interface
+            </p></div>
+            <a href="file:///C:/Users/UNETS%20COMPUTERS/Desktop/Website/Help.html"><b>Help</b></a>
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

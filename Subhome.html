@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-pane,
+        .middle-pane,
+        .right-pane {
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        .left-pane {
+            width: 250px;
+            background-color: #f48484;
+        }
+
+        .middle-pane {
+            width: 400px;
+        }
+
+        .right-pane {
+            width: 400px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-pane">
+            <div><img src="DoctorProfile.jpg" alt="Profile Image" height="40%" width="30%"></div>
+            <h3>Doctor's Profile</h3>
+            <h2>Navigation Menu</h2>
+            <ul id="nav-menu">
+                <li onclick="loadContent('patientManagement')">Patient Management</li>
+                <li onclick="loadContent('appointments')">Appointments</li>
+                <li onclick="loadContent('communications')">Communications</li>
+                <li onclick="loadContent('reports')">Reports & Analytics</li>
+            </ul>
+        </div>
+        <div class="middle-pane">
+            <div><img src="Logo.jpg" alt="Platform Logo" height="40%" width="30%"></div>
+            <h3>Platform Logo</h3>
+            <h2>Content Area</h2>
+            <div id="middle-content"></div>
+        </div>
+        <div class="right-pane">
+            <div class="download-section" style="display:flex; justify-content:space-around;  "> <label
+                    for="downdload">Download</label>
+                <div>
+                    <button><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4" />
+                        </svg></button>
+                </div>
+            </div>
+            <div><img src="PatientImage.jpg" alt="Platform Image" height="40%" width="30%"></div>
+            <h3>Patient Image</h3>
+            <h2>Detail View</h2>
+            <div id="right-content"></div>
+            <footer>
+                <p>Contact us on: +10279474934</p>
+                <a href="">Help</a>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function loadContent(section) {
+            const middleContent = document.getElementById('middle-content');
+            const rightContent = document.getElementById('right-content');
+
+
+            middleContent.innerHTML = '';
+            rightContent.innerHTML = '';
+
+
+            if (section === 'patientManagement') {
+                middleContent.innerHTML = `
+                    <p>Select an option:</p>
+                    <button onclick="loadDetail('addPatient')">Add Patient</button>
+                    <button onclick="loadDetail('viewPatients')">View Patients</button>
+                `;
+            } else if (section === 'appointments') {
+                middleContent.innerHTML = `
+                    <p>Select an appointment option:</p>
+                    <button onclick="loadDetail('scheduleAppointment')">Schedule Appointment</button>
+                    <button onclick="loadDetail('viewAppointments')">View Appointments</button>
+                `;
+            } else if (section === 'communications') {
+                middleContent.innerHTML = `
+                    <p>Select a communication option:</p>
+                    <button onclick="loadDetail('sendMessage')">Send Message</button>
+                    <button onclick="loadDetail('viewMessages')">View Messages</button>
+                `;
+            } else if (section === 'reports') {
+                middleContent.innerHTML = `
+                    <p>Select a report type:</p>
+                    <button onclick="loadDetail('patientReports')">Patient Reports</button>
+                    <button onclick="loadDetail('analytics')">Analytics</button>
+                `;
+            }
+        }
+
+        function loadDetail(detail) {
+            const rightContent = document.getElementById('right-content');
+
+
+            rightContent.innerHTML = '';
+
+            if (detail === 'addPatient') {
+                rightContent.innerHTML = `
+                    <h3>Add Patient</h3>
+                    <form>
+                        <label>Name: <input type="text" required></label><br>
+                        <label>Age: <input type="number" required></label><br>
+                        <label>Email: <input type="email" required></label><br>
+                        <button type="submit">Add Patient</button>
+                    </form>
+                `;
+            } else if (detail === 'viewPatients') {
+                rightContent.innerHTML = `
+                    <h3>Patient List</h3>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr>
+                            <td>Joanita Moreeb</td>
+                            <td>19</td>
+                            <td>joanitaoe@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Jamalio</td>
+                            <td>20</td>
+                            <td>jamesegeroh@gmail.com</td>
+                        </tr>
+                        <tr>
+                        <td>Apollo Mugabe</td>
+                        <td>19</td>
+                    <td>mugabeapollo@gmail.com</td></tr>
+                    </table>
+                `;
+            } else if (detail === 'scheduleAppointment') {
+                rightContent.innerHTML = `
+                    <h3>Schedule Appointment</h3>
+                    <form>
+                        <label>Patient Name: <input type="text" required></label><br>
+                        <label>Date: <input type="date" required></label><br>
+                        <label>Time: <input type="time" required></label><br>
+                        <button type="submit">Schedule Appointment</button>
+                    </form>
+                `;
+            } else if (detail === 'viewAppointments') {
+                rightContent.innerHTML = `
+                    <h3>Appointment List</h3>
+                    <table>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                        <tr>
+                            <td>Jamali Segero</td>
+                            <td>2024-09-30</td>
+                            <td>10:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Joanita Moreeb</td>
+                            <td>2024-10-02</td>
+                            <td>2:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Apollo Mugabe</td>
+                            <td>2024-09-17</td>
+                            <td>4:30 PM</td>
+                        </tr>
+                    </table>
+                `;
+            } else if (detail === 'sendMessage') {
+                rightContent.innerHTML = `
+                    <h3>Send Message</h3>
+                    <form>
+                        <label>Recipient: <input type="text" required></label><br>
+                        <label>Message:</label><br>
+                        <textarea rows="4" required=""placeholder="Text here the message"required></textarea><br>
+                        <button type="submit">Send Message</button>
+                    </form>
+                `;
+            } else if (detail === 'viewMessages') {
+                rightContent.innerHTML = `
+                    <h3>Messages</h3>
+                    <table>
+                        <tr>
+                            <th>Sender</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr>
+                            <td>Admin</td>
+                            <td>Welcome to the portal!</td>
+                            <td>2024-09-24</td>
+                        </tr>
+                        <tr>
+                            <td>Patient</td>
+                            <td>Can I reschedule my appointment?</td>
+                            <td>2024-09-25</td>
+                        </tr>
+                    </table>
+                `;
+            } else if (detail === 'patientReports') {
+                rightContent.innerHTML = `
+                    <h3>Patient Reports</h3>
+                    <input type="file"id="resume" name="resume"accept=".pdf, .doc, .docx, .screenshots"required="">
+                `;
+            } else if (detail === 'analytics') {
+                rightContent.innerHTML = `
+                    <h3>Analytics</h3>
+                    <table border="2">
+                        <tr>
+                            <th>Date</th>
+                            <th>Doctor ID</th>
+                            <th>Doctor Name</th>
+                            <th>Patient ID</th>
+                            <th>Patient Name</th>
+                            <th>Department</th>
+                        </tr>
+                        <tr>
+                            <td>2024-09-01</td>
+                            <td>D001</td>
+                            <td>Dr. Allan .M</td>
+                            <td>P001</td>
+                            <td>Joanita Doe</td>
+                            <td>Cardiology</td>
+                        </tr><tr>
+                            <td>2024-09-02</td>
+                            <td>D002</td>
+                            <td>Dr. Emily. C</td>
+                            <td>P002</td>
+                            <td>Jamali Segero</td>
+                            <td>Neurology</td>
+                        </tr><tr>
+                            <td>2024-09-03</td>
+                            <td>D001</td>
+                            <td>Dr. Allan. M</td>
+                            <td>P003</td>
+                            <td>Charlie</td>
+                            <td>Cardiology</td>
+                        </tr>
+                        <tr>
+                            <td>2024-09-04</td>
+                            <td>D004</td>
+                            <td>Dr. Sarah. L</td>
+                            <td>P004</td>
+                            <td>Glades</td>
+                            <td>Orthopedics</td>
+                        </tr>
+                    </table>
+                `;
+            }
+        }
+    </script>
+</body>
+
+</html>
